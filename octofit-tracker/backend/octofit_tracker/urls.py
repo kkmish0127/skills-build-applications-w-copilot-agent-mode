@@ -16,6 +16,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+import os
+
+CODESPACE_NAME = os.environ.get('CODESPACE_NAME')
+BASE_API_URL = f'https://{CODESPACE_NAME}-8000.app.github.dev/api/' if CODESPACE_NAME else '/api/'
 from rest_framework import routers
 from .views import UserViewSet, TeamViewSet, ActivityViewSet, LeaderboardViewSet, WorkoutViewSet
 from rest_framework.decorators import api_view
